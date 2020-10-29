@@ -137,7 +137,7 @@ void end_tex(FILE* out)
 }
 
 
-void print_text_in_tex(double *main_array, unsigned int count_values, FILE* out)
+void print_text_in_tex_main(double *main_array, unsigned int count_values, FILE* out)
 {
 /*
 	FILE *out = NULL;
@@ -199,4 +199,103 @@ for (int i = 0; i < count_values; i++)
 	fprintf(out, "\n\\end{tabular}\n"
 					"\\end{table} \n");
 	fprintf(out, "\\end{document}\n"); */
+}
+
+void print_text_in_tex_F_x(double *main_array, unsigned int count_values, FILE *out)
+{
+	fprintf(out, "\\begin{table}[h]\n"
+				 "\\caption { \"x_y\" }\n"
+				 "\\center\n"
+				 "\\begin{tabular} {");
+	for (int i = 0; i < count_values; i++)
+	{
+		fprintf(out, "|l");
+	}
+	fprintf(out, "|}\n");
+	fprintf(out, " \\hline\n");
+	/*
+	for (int i = 0; i < (count_values + 1) * count_values; i++)
+	{
+		//printf("%d", i);
+		printf("%lf ", main_array[(i % count_values) + count_values * (i / count_values)]);
+		if ((count_values - 1) == (i % count_values))
+			printf("\n");
+	}
+*/
+	for (int i = 0; i < (count_values) * count_values; i++)
+	{
+		if ((count_values - 1) == (i % count_values))
+		{
+			fprintf(out, " %lf", main_array[(i % count_values) + count_values * (i / count_values)]);
+			fprintf(out, " \\\\ \\hline \n");
+			continue;
+		}
+		fprintf(out, " %lf &", main_array[(i % count_values) + count_values * (i / count_values)]);
+	}
+	fprintf(out, "\n\\end{tabular}\n"
+				 "\\end{table} \n");
+}
+
+void print_text_in_tex_P_x(double *main_array, unsigned int count_values, FILE *out)
+{
+	fprintf(out, "\\begin{table}[h]\n"
+				 "\\caption { \"x_y\" }\n"
+				 "\\center\n"
+				 "\\begin{tabular} {");
+	for (int i = 0; i < count_values; i++)
+	{
+		fprintf(out, "|l");
+	}
+	fprintf(out, "|}\n");
+	fprintf(out, " \\hline\n");
+	/*
+	for (int i = 0; i < (count_values + 1) * count_values; i++)
+	{
+		//printf("%d", i);
+		printf("%lf ", main_array[(i % count_values) + count_values * (i / count_values)]);
+		if ((count_values - 1) == (i % count_values))
+			printf("\n");
+	}
+*/
+	for (int i = 0; i < count_values; i++)
+	{
+		if ((count_values - 1) == (i % count_values))
+		{
+			fprintf(out, " %lf", main_array[(i % count_values) + count_values * (i / count_values)]);
+			fprintf(out, " \\\\ \\hline \n");
+			continue;
+		}
+		fprintf(out, " %lf &", main_array[(i % count_values) + count_values * (i / count_values)]);
+	}
+	fprintf(out, "\n\\end{tabular}\n"
+				 "\\end{table} \n");
+}
+
+void print_text_in_tex_spline(double *main_array, unsigned int count_values, FILE *out)
+{
+	fprintf(out, "\\begin{table}[h]\n"
+				 "\\caption { \"x_y\" }\n"
+				 "\\center\n"
+				 "\\begin{tabular} {");
+	for (int i = 0; i < count_values - 1; i++)
+	{
+		fprintf(out, "|l");
+	}
+	fprintf(out, "|}\n");
+	fprintf(out, " \\hline\n");
+	/*
+	for (int i = 0; i < (count_values + 1) * count_values; i++)
+	{
+		//printf("%d", i);
+		printf("%lf ", main_array[(i % count_values) + count_values * (i / count_values)]);
+		if ((count_values - 1) == (i % count_values))
+			printf("\n");
+	}
+*/
+	for (int i = 0; i < (count_values - 1); i++)
+	{
+		fprintf(out, "%lf & %lf & %lf & %lf\\\\ \\hline \n", main_array[0 + i * 4], main_array[1 + i * 4], main_array[2 + i * 4], main_array[3 + i * 4]);
+	}
+	fprintf(out, "\n\\end{tabular}\n"
+				 "\\end{table} \n");
 }

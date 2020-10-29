@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.19)  28 OCT 2020 22:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.19)  29 OCT 2020 22:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -642,68 +642,95 @@ l.8 \caption { "x_y" }
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.22 \caption { "x_y" }
+l.24 \caption { "x_y" }
                        
 ? 
 ! Extra }, or forgotten $.
 \sbox ...hbox {\color@setgroup #2\color@endgroup }
                                                   
-l.22 \caption { "x_y" }
+l.24 \caption { "x_y" }
                        
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.22 \caption { "x_y" }
+l.24 \caption { "x_y" }
                        
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.22 \caption { "x_y" }
+l.24 \caption { "x_y" }
                        
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.36 \caption { "x_y" }
+l.39 \caption { "x_y" }
                        
 ? 
 ! Extra }, or forgotten $.
 \sbox ...hbox {\color@setgroup #2\color@endgroup }
                                                   
-l.36 \caption { "x_y" }
+l.39 \caption { "x_y" }
                        
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.36 \caption { "x_y" }
+l.39 \caption { "x_y" }
                        
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.36 \caption { "x_y" }
+l.39 \caption { "x_y" }
                        
 ? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.48 \caption { "x_y" }
+                       
+? 
+! Extra }, or forgotten $.
+\sbox ...hbox {\color@setgroup #2\color@endgroup }
+                                                  
+l.48 \caption { "x_y" }
+                       
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.48 \caption { "x_y" }
+                       
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.48 \caption { "x_y" }
+                       
+? 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./out.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./out.aux) ) 
 Here is how much of TeX's memory you used:
  3651 strings out of 494923
  49660 string characters out of 6180741
- 117553 words of memory out of 5000000
+ 120553 words of memory out of 5000000
  6908 multiletter control sequences out of 15000+600000
  8285 words of font info for 32 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  55i,7n,30p,291b,223s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on out.pdf (1 page, 11292 bytes).
+</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on out.pdf (2 pages, 12367 bytes).
 PDF statistics:
- 12 PDF objects out of 1000 (max. 8388607)
- 7 compressed objects within 1 object stream
+ 15 PDF objects out of 1000 (max. 8388607)
+ 9 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
