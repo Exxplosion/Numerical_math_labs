@@ -7,8 +7,7 @@
 #define x_(i) main_array[(i)]
 #define f_(i) main_array[count_values + (i)]
 
-
-unsigned int check_count_values(char* init_array)
+unsigned int check_count_values(char *init_array)
 {
     unsigned int tmp = 0;
     for (int i = 0; init_array[i] != '\n'; i++)
@@ -20,7 +19,7 @@ unsigned int check_count_values(char* init_array)
     return tmp;
 }
 
-void put_values(double* main_array, char* init_array, unsigned int line_size_matrix)
+void put_values(double *main_array, char *init_array, unsigned int line_size_matrix)
 {
     int n = 0;
     int i = 0;
@@ -33,22 +32,20 @@ void put_values(double* main_array, char* init_array, unsigned int line_size_mat
             //printf("MMM: %c\n", init_array[n]);
             supp_str[supp_count] = init_array[n];
             supp_count++;
-            n++;    
+            n++;
         }
         supp_str[supp_count] = '\0';
         //printf("HAA %s\n", supp_str);
         double a = atof(supp_str);
         //printf("%le\n", a);
-        main_array[(i % line_size_matrix) + line_size_matrix * (i  / line_size_matrix)] = atof(supp_str);
+        main_array[(i % line_size_matrix) + line_size_matrix * (i / line_size_matrix)] = atof(supp_str);
         //printf("%le\n", main_array[(i % line_size_matrix) + (i / line_size_matrix)]);
         i++;
         n++;
     }
 }
 
-
-
-void put_coefficients(double* main_array, unsigned int line_size_matrix)
+void put_coefficients(double *main_array, unsigned int line_size_matrix)
 {
     for (int i = 0; i < line_size_matrix - 1; i++)
     {
@@ -56,13 +53,12 @@ void put_coefficients(double* main_array, unsigned int line_size_matrix)
         {
             //int i_line = line_size_matrix * i;
             //printf("i = %d (%d), j =%d, real = %d\n", i + 2, (i + 2) * line_size_matrix, j, (i + 2) * line_size_matrix + j);
-            main_array[(i + 2) * line_size_matrix + j] = (main_array[(i + 1) * line_size_matrix + j + 1] - main_array[(i + 1) * line_size_matrix + j]) \
-            / (main_array[j + i + 1] - main_array[j]);
+            main_array[(i + 2) * line_size_matrix + j] = (main_array[(i + 1) * line_size_matrix + j + 1] - main_array[(i + 1) * line_size_matrix + j]) / (main_array[j + i + 1] - main_array[j]);
         }
     }
 }
 
-void opening_parentheses(double* F_x, double* main_array, int count_values)
+void opening_parentheses(double *F_x, double *main_array, int count_values)
 {
     for (int i = 1; i < count_values; i++)
     {
@@ -97,7 +93,7 @@ void opening_parentheses(double* F_x, double* main_array, int count_values)
     }
 }
 
-void opening_parentheses_with_b(double* F_x,double* main_array, int count_values)
+void opening_parentheses_with_b(double *F_x, double *main_array, int count_values)
 {
     for (int i = 0; i < count_values - 1; i++)
     {
@@ -108,15 +104,15 @@ void opening_parentheses_with_b(double* F_x,double* main_array, int count_values
     }
 }
 
-void get_coefficients(double* x_coefficients, double* F_x, double* main_array, int count_values)
+void get_coefficients(double *x_coefficients, double *F_x, double *main_array, int count_values)
 {
     x_coefficients[0] += main_array[count_values];
     for (int i = 0; i < count_values; i++)
     {
         for (int j = 0; j < count_values - 1; j++)
         {
-            if( i != 0)
-                x_coefficients[i] = x_coefficients[i] + F_x[(i*count_values) + j];
+            if (i != 0)
+                x_coefficients[i] = x_coefficients[i] + F_x[(i * count_values) + j];
             else
             {
                 x_coefficients[i] = x_coefficients[i] + F_x[(i * count_values) + j];
@@ -126,7 +122,7 @@ void get_coefficients(double* x_coefficients, double* F_x, double* main_array, i
     }
 }
 
-void derivative_polynom(double* x_coefficients, int count_values, double* d_dx_poly)
+void derivative_polynom(double *x_coefficients, int count_values, double *d_dx_poly)
 {
     for (int i = 0; i < count_values - 1; i++)
     {
@@ -135,7 +131,7 @@ void derivative_polynom(double* x_coefficients, int count_values, double* d_dx_p
     }
 }
 
-double value_at_point(double point, double* x_coefficients, int count_values)
+double value_at_point(double point, double *x_coefficients, int count_values)
 {
     double value = x_coefficients[0];
     for (int i = 1; i < count_values; i++)
@@ -145,16 +141,16 @@ double value_at_point(double point, double* x_coefficients, int count_values)
     return value;
 }
 
-void get_spline(double* spline, double* x_coefficients, double* d_dx_poly, double* main_array, int count_values)
+void get_spline(double *spline, double *x_coefficients, double *d_dx_poly, double *main_array, int count_values)
 {
     for (int i = 0; i < count_values; i++)
     {
         //printf("................\n d_P(x(i+1)) = %le\n  x(i+1) = %le, x(i) = %le, \n f(i+1) = %le, f(i) = %le \n", d_P(x_(i+1)), x_(i+1), x_(i), f_(i+1), f_(i));
-        spline[i * 4 + 3] = (d_P(x_(i + 1)) * (x_(i + 1) - x_(i)) - 2*(f_(i + 1) - f_(i)) + d_P(x_(i)) * (x_(i + 1) - x_(i))) / pow((x_(i+1)- x_(i)), 3);
+        spline[i * 4 + 3] = (d_P(x_(i + 1)) * (x_(i + 1) - x_(i)) - 2 * (f_(i + 1) - f_(i)) + d_P(x_(i)) * (x_(i + 1) - x_(i))) / pow((x_(i + 1) - x_(i)), 3);
         //printf("spline -- %le\n", spline[i * 4 + 3]);
-        spline[i * 4 + 2] = (-d_P(x_(i + 1)) * (x_(i + 1) - x_(i)) * (x_(i + 1) + 2*x_(i)) + 3*(f_(i + 1) - f_(i))* (x_(i+1) + x_(i)) - d_P(x_(i)) * (x_(i + 1) - x_(i)) * (x_(i) + 2*x_(i+1))) / pow((x_(i+1)- x_(i)), 3);
-        spline[i * 4 + 1] = (d_P(x_(i + 1)) * x_(i) * (x_(i + 1) - x_(i)) * (2*x_(i + 1) + x_(i)) - 6 * (f_(i + 1) - f_(i)) * x_(i + 1) * x_(i) + d_P(x_(i)) * x_(i+1) * (x_(i + 1) - x_(i)) * (2*x_(i) + x_(i + 1))) / pow((x_(i + 1) - x_(i)), 3);
-        spline[i * 4 + 0] = (-d_P(x_(i + 1)) * x_(i) * x_(i) * x_(i + 1) * (x_(i + 1) - x_(i)) + (f_(i + 1)) * x_(i) * x_(i) * (3 * x_(i + 1) - x_(i)) + f_(i) * x_(i+1) * x_(i+1)* (x_(i+1) - 3*x_(i)) - d_P(x_(i)) * x_(i) * x_(i+1) * x_(i+1) * (x_(i + 1) - x_(i))) / pow((x_(i + 1) - x_(i)), 3);
+        spline[i * 4 + 2] = (-d_P(x_(i + 1)) * (x_(i + 1) - x_(i)) * (x_(i + 1) + 2 * x_(i)) + 3 * (f_(i + 1) - f_(i)) * (x_(i + 1) + x_(i)) - d_P(x_(i)) * (x_(i + 1) - x_(i)) * (x_(i) + 2 * x_(i + 1))) / pow((x_(i + 1) - x_(i)), 3);
+        spline[i * 4 + 1] = (d_P(x_(i + 1)) * x_(i) * (x_(i + 1) - x_(i)) * (2 * x_(i + 1) + x_(i)) - 6 * (f_(i + 1) - f_(i)) * x_(i + 1) * x_(i) + d_P(x_(i)) * x_(i + 1) * (x_(i + 1) - x_(i)) * (2 * x_(i) + x_(i + 1))) / pow((x_(i + 1) - x_(i)), 3);
+        spline[i * 4 + 0] = (-d_P(x_(i + 1)) * x_(i) * x_(i) * x_(i + 1) * (x_(i + 1) - x_(i)) + (f_(i + 1)) * x_(i) * x_(i) * (3 * x_(i + 1) - x_(i)) + f_(i) * x_(i + 1) * x_(i + 1) * (x_(i + 1) - 3 * x_(i)) - d_P(x_(i)) * x_(i) * x_(i + 1) * x_(i + 1) * (x_(i + 1) - x_(i))) / pow((x_(i + 1) - x_(i)), 3);
     }
 }
 
@@ -175,10 +171,11 @@ double value_at_point_3(double point, double *main_array, double *spline, int co
     int numb_point = 1;
     for (int i = 0; i < count_values - 1; i++)
     {
+        //printf("%le             %le \n", main_array[i], main_array[i+1]);
         if ((main_array[i] <= point) && (main_array[i + 1] >= point))
         {
             numb_point = i;
-            printf("%d\n", i);
+            //printf("%d\n", i);
             break;
         }
     }
@@ -187,50 +184,47 @@ double value_at_point_3(double point, double *main_array, double *spline, int co
 
     for (int i = 1; i < 4; i++)
     {
-        value += spline[i] * pow(point, i);
+        value += spline[numb_point * 4 + i] * pow(point, i);
     }
 
     return value;
 }
 
-
-char* formation_polynom(double* x_coefficients, int count_values)
+char *formation_polynom(double *x_coefficients, int count_values)
 {
-    char* polynom = (char* ) calloc(200, sizeof(char));
+    char *polynom = (char *)calloc(200, sizeof(char));
     int s = sprintf(polynom, "./plot.py ");
     int n = s;
-    for (int i = 0; i < count_values ; i++)
+    for (int i = 0; i < count_values; i++)
     {
         int s = sprintf(polynom + n, "%le_", x_coefficients[i]);
-        n +=s ;
+        n += s;
         //if (i != count_values -1)
-            //sprintf(polynom, "+");
+        //sprintf(polynom, "+");
     }
     sprintf(polynom + n, "0");
-        printf("\n%s\n", polynom);
+    printf("\n%s\n", polynom);
     return polynom;
 }
 
-
 int main()
 {
-    char* init_array = NULL;
+    char *init_array = NULL;
     init_array = read_file_in_array();
-    
+
     //printf("%s", init_array);
     unsigned int count_values = check_count_values(init_array);
 
-    double main_array[(count_values + 1) * count_values]; //не знаю почему, 
+    double main_array[(count_values + 1) * count_values]; //не знаю почему,
     //но я здесь решил воспользоваться одномерным, но по факту двумерным массивом...
     //доступ к ij ячейки определяется как (i * (count_values)) + j
-
 
     printf("%d\n", count_values);
     put_values(main_array, init_array, count_values);
 
-    put_coefficients(main_array,  count_values);
+    put_coefficients(main_array, count_values);
 
-/*
+    /*
     for (int i = 0; i < (count_values + 1) * count_values; i++)
     {
         //printf("%d", i);
@@ -241,7 +235,7 @@ int main()
 */
     //ох...
     double F_x[count_values * count_values] = {0};
-    F_x[0] = -1 * main_array[0];  //F- column
+    F_x[0] = -1 * main_array[0]; //F- column
     F_x[count_values] = 1;
     opening_parentheses(F_x, main_array, count_values);
 
@@ -257,7 +251,7 @@ int main()
 
     get_spline(spline, x_coefficients, d_dx_poly, main_array, count_values);
 
-/*
+    /*
     for (int i = 0; i < (count_values - 1); i++)
     {
 
@@ -271,8 +265,8 @@ int main()
     }
 */
 
-    printf(" value at 0.2  POLY- %le", value_at_point(0.2, x_coefficients, count_values));
-    printf(" value at 0.2  SPLINE- %le", value_at_point_3(0.2, main_array, spline, count_values));
+    printf(" value at 0.2  POLY-   %le\n", value_at_point(0.2, x_coefficients, count_values));
+    printf(" value at 0.2  SPLINE- %le\n", value_at_point_3(0.2, main_array, spline, count_values));
 
     formation_polynom(x_coefficients, count_values);
     FILE *out = NULL;
@@ -296,3 +290,18 @@ int main()
     //system("./plot.py");
     system(formation_polynom(x_coefficients, count_values));
 }
+
+/*
+
+0.17453 0.5236 0.87267 1.22173 1.5708 1.91986 2.26893
+0.00162 0.00252 0.00498 0.0129 0.03964 0.1207 0.34097
+
+*/
+
+/*
+
+1.22173 1.5708 1.91986 2.26893 2.61799 2.96706
+0.01834 0.09787 0.40623 1.38070 4.01752 10.3450
+
+
+*/

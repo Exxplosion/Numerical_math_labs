@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.19)  29 OCT 2020 22:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.19)  6 DEC 2020 21:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -639,6 +639,11 @@ l.8 \caption { "x_y" }
 l.8 \caption { "x_y" }
                       
 ? 
+
+Overfull \hbox (1193.51855pt too wide) in paragraph at lines 10--22
+ [] 
+ []
+
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -724,10 +729,10 @@ Here is how much of TeX's memory you used:
  6908 multiletter control sequences out of 15000+600000
  8285 words of font info for 32 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 55i,7n,30p,291b,223s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,7n,30p,322b,223s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on out.pdf (2 pages, 12367 bytes).
+Output written on out.pdf (2 pages, 12562 bytes).
 PDF statistics:
  15 PDF objects out of 1000 (max. 8388607)
  9 compressed objects within 1 object stream
